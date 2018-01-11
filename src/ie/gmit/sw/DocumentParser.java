@@ -98,11 +98,11 @@ public class DocumentParser implements Runnable {
 
 	private Shingle getNextShingle() {
 		StringBuilder sb = new StringBuilder();
-		int counter = 0;
-		while (counter < shingleSize) {
+		int cnt = 0;
+		while (cnt< shingleSize) {
 			if (buffer.peek() != null) {
 				sb.append(buffer.poll());
-				counter++;
+				cnt++;
 			}
 		}
 		if (sb.length() > 0) {

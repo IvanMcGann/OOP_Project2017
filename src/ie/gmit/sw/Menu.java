@@ -7,11 +7,12 @@ public class Menu {
 	Scanner Scanner = new Scanner(System.in);
 	private String doc1;
 	private String doc2;
+	private int option;
 	private int shingleSize;
 	private int k;
 	private int blockingQueueSize;
 	private int threadPoolSize;
-	private int option;
+	
 
 	public int getShingleSize() {
 		return shingleSize;

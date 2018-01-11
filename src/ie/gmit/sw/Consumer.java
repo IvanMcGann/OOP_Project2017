@@ -14,6 +14,8 @@ public class Consumer implements Runnable {
 	private BlockingQueue<Shingle> queue;
 	private int k;
 	private int[] minhashes;
+
+	private float jaccardVal;
 	private Map<Integer, List<Integer>> map = new HashMap<>();
 	private ExecutorService pool;
 
@@ -46,11 +48,7 @@ public class Consumer implements Runnable {
 					pool.execute(new Runnable() {
 						public void run() {
 							for (int i = 0; i < minhashes.length; i++) {
-								int value = s.getHashcode() ^ minhashes[i]; // ^
-																			// -
-																			// xor(Random
-																			// generated
-																			// key)
+								int value = s.getHashcode() ^ minhashes[i];
 								List<Integer> list = map.get(s.getDocId1());
 								if (list == null) {
 									list = new ArrayList<Integer>(k);
@@ -63,6 +61,16 @@ public class Consumer implements Runnable {
 										list.set(i, value);
 									}
 								}
+								
+								if(i == k-1) {
+									List<Integer>intersect = new ArrayList<Integer>(map.get(2));
+									intersect.retainAll(map.get(1));
+									
+									float jaccard =((float)intersect.size())/
+											((k)+((float)intersect.size()));
+									jaccardVal = (jaccard*2)*100;
+									System.out.print("\nJacard Value "+ jaccardVal);
+									}
 							}
 						}
 					});
