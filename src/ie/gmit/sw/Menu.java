@@ -12,7 +12,6 @@ public class Menu {
 	private int k;
 	private int blockingQueueSize;
 	private int threadPoolSize;
-	
 
 	public int getShingleSize() {
 		return shingleSize;
@@ -49,10 +48,10 @@ public class Menu {
 	public Menu() {
 		doc1 = new String();
 		doc2 = new String();
-		shingleSize = 0;
-		k = 0;
+		shingleSize = 5;
+		k = 200;
 		blockingQueueSize = 100;
-		threadPoolSize = 0;
+		threadPoolSize = 10;
 		option = 0;
 
 	}
@@ -61,20 +60,9 @@ public class Menu {
 
 		System.out.println("Enter the first document name");
 		doc1 = Scanner.next();
-		System.out.println(doc1);
 
 		System.out.println("Enter the second document name");
 		doc2 = Scanner.next();
-		System.out.println(doc2);
-
-		System.out.println("Please enter Shingle size.");
-		shingleSize = Scanner.nextInt();
-
-		System.out.println("Please enter k value (minhash amount):");
-		k = Scanner.nextInt();
-
-		System.out.println("Please enter Thread Pool Size ");
-		threadPoolSize = Scanner.nextInt();
 
 		try {
 			System.out.println("please " + doc1);
